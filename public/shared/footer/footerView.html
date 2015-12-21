@@ -1,0 +1,27 @@
+<footer>
+	<div class="line-footer"></div>
+	<div  class="container myFooter">
+		<div class="row">
+			<div class="col-lg-3 col-xs-12 col-md-12">
+				<h5> Négrier Aurélien </h5>
+			</div>
+			<div ng-repeat="item in items">
+				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+					<h6>{{item.name}}</h6>
+					<ul class="list-style">
+						<div ng-repeat="value in item.value" ng-footer-item>
+							<li>
+								<a ng-href="{{value.link}}">
+									<div class="white">
+										<i style="color:{{fcolor}}" class="color-main-2 fa {{value.icon}} fa-1x"></i>
+										<span >{{value.name}}</span>
+									</div>
+								</a>
+							</li>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

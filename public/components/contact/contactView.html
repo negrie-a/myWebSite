@@ -1,0 +1,89 @@
+<section class="section-header contact">
+	<div class="row">
+		<div class="col-xs-push-4 col-xs-4 text-center">
+			<div class="main-icon">
+				<i class="fa fa-location-arrow"></i>
+			</div>
+		</div>
+		
+	</div>
+	<div class="row">
+		<div class="col-xs-12 ">
+			<h2>CONTACTEZ-MOI</h2>
+			<p>Laissez-moi un petit mot</p>
+		</div>
+	</div>
+	<div class="col-sm-4 search-bar-small">
+		<form method="get" action="/search" id="search">
+			<input name="q" type="text" size="40" placeholder="Search..." />
+		</form>
+	</div>
+</section>
+<section class="section-contact">
+	<div class="row">
+		<div class="col-md-4 grid-presentation">
+			<div class="get-in-touch">
+				<h3>ENTRER EN CONTACT</h3>
+				<p>
+				{{contact.contact["get-in-touch"]}}
+				</p>
+			</div>
+			<div class="address">
+				<h3>MON ADRESSE</h3>
+				<div class="item-data">
+					<i class="fa fa-map-marker"></i>
+					<div class="text-item">
+						<p>{{contact.contact.location}}</p>
+					</div>
+				</div>
+				<div class="item-data">
+					<i class="fa fa-phone"></i>
+					<div class="text-item">
+						<p>{{contact.contact.phone}}</p>
+					</div>
+				</div>
+				<div class="item-data">
+					<i class="fa fa-envelope"></i>
+					<div class="text-item">
+						<p>{{contact.contact.email}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="social-networks">
+				<h3>SOCIAL NETWORKS</h3>
+				<ul>
+					<a href="{{contact.contact.facebook}}"><li class="fa fa-facebook-square fa-2x"></li></a>
+					<a href="{{contact.contact.linkedin}}"><li class="fa fa-linkedin-square fa-2x"></li></a>
+					<a href="{{contact.contact.twitter}}"><li class="fa fa-twitter-square fa-2x"></li></a>
+					<a href="{{contact.contact.google}}"><li class="fa fa-google-plus-square fa-2x"></li></a>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-8 form-mail">
+			<h3 class="send-message-text">ENVOYER MESSAGE</h3>
+			<form ng-submit="contact.submit()" name="contact.mailForm" class="form-mail">
+				<div class="form-group">
+					<input class="information-mail" type="name" placeholder="Enter Your Name" ng-model="contact.nameSender" required/>
+				</div>
+				<div class="form-group">
+					<input class="information-mail" type="email" placeholder="Enter Your Email" ng-model="contact.emailSender" required/>
+				</div>
+				<div class="form-group">
+					<input class="information-mail" type="phone" placeholder="Enter Your Phone (optionnel)" ng-model="contact.phoneSender"/>
+				</div>
+				<div class="form-group">
+					<input class="information-mail" type="subject" placeholder="Your Subject" ng-model="contact.subject" required/>
+				</div>
+				<div class="form-group">
+					<textarea ng-model="contact.text" required></textarea>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Send"/>
+					<img ng-show="loadersend" src="../../assets/img/giff/loader_contact.GIF" class="loader_sendmail">
+				</div>
+
+			</form>
+		</div>
+	</div>
+</section>
+<ng-footer color="#FD7B67"></ng-footer>

@@ -1,0 +1,53 @@
+<section class="section-header about">
+    <div class="row">
+        <div class="col-xs-push-4 col-xs-4 text-center">
+            <div class="main-icon">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>À PROPOS</h2>
+            <p>Qui suis je ?</p>
+        </div>
+    </div>
+</section>
+<section class="section-about">
+    <section class="presentation-intro">
+        <div class="row">
+            <div class="col-md-12 col-lg-3 text-center">
+                <img class="profil-image" ng-src="../../assets/img/profil.jpg">
+            </div>
+            <div class="col-md-5 col-lg-4">
+                <ul>
+                    <li ng-repeat="data in profilData">
+                        {{data.name}} : {{data.data}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-7 col-lg-5 presentation">
+                <h4>PROFIL PROFESSIONNEL</h4>
+                <p ng-if="profil.resume != undefined" ng-bind-html="profil.resume | backline"></p>
+                <div class="col-lg-12 button-download">
+                    <div class="button-blue">
+                        <a href="/assets/img/profil.jpg" download="profil.jpg">Télécharger mon CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <ui-gmap-google-map options='map.options' center='map.center' zoom='map.zoom'>
+    <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+    </ui-gmap-google-map>
+    <section class="resume">
+        <div class="text-center">
+            <h1>Curriculum Vitae</h1>
+        </div>
+        <div class="text-center">
+            <img class="cv" ng-src="../../assets/img/{{profil['cv-path']}}"/>
+        </div>
+    </section>
+</section>
+<ng-footer color="#828BB4"></ng-footer>
+

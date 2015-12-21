@@ -1,0 +1,16 @@
+<div class="carousel {{dEffect}}">
+	<div class="carousel-inner slide" ng-transclude></div>
+
+	<a class="left carousel-control"  role="button" ng-show="{{dArrowTransition}}" ng-click="getPrevImg()">
+		<span class="fa fa-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control"  role="button" ng-show="{{dArrowTransition}}" ng-click="getNextImg()">
+		<span class="fa fa-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+	
+	<div id="arrow-carousel" class="carousel-caption button-scroll">
+		<div class="arrow"></div>
+	</div>
+</div>

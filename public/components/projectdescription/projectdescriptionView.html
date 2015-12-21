@@ -1,0 +1,138 @@
+<div class="section-projectdescription">
+
+	<!-- CAROUSEL -->
+
+	<ng-carousel play="'6000'" size-y-resize="false" effect="'slide'">
+	<div class="carousel-caption">
+	<div class="col-lg-12">
+		<ng-headerbar active="false" fixed="false" transparence="true" ></ng-headerbar>
+	</div>
+	</div>
+		<div ng-repeat="item in projectdescription.slider" ng-class="[$index == 0 ? 'active' : '', 'item', 'wrap-image-slider']">
+			<img class="image-slider" ng-src="assets/img/{{item.image}}">
+		</div> 
+		<!-- PAS DE RESPONSSIVE A CAUSE DU CHARGEMENT D4ANGULAR PLUS RADIPE, FAIRE UN NG-IMAGE -->
+	</ng-carousel>
+			<div class="resume">
+				<h1 class="titre">{{projectdescription.project.title | uppercase}}</h1>
+				<div class="text-center">
+					<div class="line-bold"></div>
+				</div>
+				<h4>{{projectdescription.project['resume-intro']}}</h4>
+				<p ng-bind-html="projectdescription.project.resume | backline"></p>
+			</div>
+
+			<div class="information-project">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 text-center" ng-repeat="item in information">
+						<i class="{{item.icon}} cercle"></i>
+						<h5>{{item.title}}</h5>
+						<p>{{item.data}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div ng-repeat="item in projectdescription.descriptionProject" ng-class="[$index % 2 == 0 ? 'color-background' : '', 'project-description']">
+				<h3>{{item.title}}</h3>
+				<div class="line"></div>
+				<div class="row content">
+					<div ng-if="$index % 2 == 0 && item.img1!==null && item.img2===null">
+						<div class="col-md-6 col-xs-12 no-margin-pading">
+							<p ng-bind-html="item.section | backline"></p>
+						</div>
+						<div class="text-center col-md-push-1 col-md-5 col-xs-12 no-margin-pading">
+							<img class="image-description" ng-src="../../assets/img/{{item.img1}}">
+						</div>
+					</div>
+					<div ng-if="$index % 2 != 0 && item.img1!==null && item.img2===null">
+						<div class="text-center col-md-5 col-xs-12 no-margin-pading">
+							<img class="image-description" ng-src="../../assets/img/{{item.img1}}">
+						</div>
+						<div class="col-md-push-1 col-md-6 col-xs-12 no-margin-pading">
+							<p ng-bind-html="item.section | backline"></p>
+						</div>
+					</div>
+					<div ng-if="item.img1===null && item.img2===null">
+						<div class="col-xs-12 no-margin-pading">
+							<p ng-bind-html="item.section | backline"></p>
+						</div>
+					</div>
+					<div ng-if="item.img1!==null && item.img2!==null">
+						<div class="col-xs-12 no-margin-pading">
+							<p ng-bind-html="item.section | backline"></p>
+						</div>
+						<div class="row">
+							<div class="text-center col-md-6 col-xs-12">
+								<img class="image-description margin-spe" ng-src="../../assets/img/{{item.img1}}">
+							</div>
+							<div class="text-center col-md-6 col-xs-12">
+								<img class="image-description" ng-src="../../assets/img/{{item.img2}}">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		<div id="video" ng-show="projectdescription.videos.length > 0" class="line-all-width"></div>
+
+			<div  ng-show="projectdescription.videos.length > 0" class="video">
+			<h1 class="text-center">VIDEO</h1>
+			<div class="text-center">
+				<div class="line-bold"></div>
+			</div>
+
+			<div class="videogular-container">
+				<videogular vg-player-ready="projectdescription.onPlayerReady($API)" vg-complete="projectdescription.onCompleteVideo()" vg-theme="projectdescription.config.theme.url">
+		            <vg-media vg-src="projectdescription.config.sources"
+		                      >
+		            </vg-media>
+
+		            <vg-controls>
+		                <vg-play-pause-button></vg-play-pause-button>
+		                <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+		                <vg-scrub-bar>
+		                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+		                </vg-scrub-bar>
+		                <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+		                <vg-volume>
+		                    <vg-mute-button></vg-mute-button>
+		                    <vg-volume-bar></vg-volume-bar>
+		                </vg-volume>
+		                <vg-fullscreen-button></vg-fullscreen-button>
+		            </vg-controls>
+		            <vg-buffering></vg-buffering>
+		            <vg-overlay-play></vg-overlay-play>
+		            <vg-poster vg-url='projectdescription.config.plugins.poster'></vg-poster>
+		        </videogular>
+			</div>
+	        <div class="videogular-item-container">
+		        	<div ng-repeat="item in projectdescription.videos" class="col-md-4 col-xs-6 video-link">
+		        			<div ng-click="projectdescription.setVideo($index)" class="img-video">
+		        				<img ng-src="{{item.img}}">
+		        				<div class="black-filter"></div>
+		        				<div class="button-play">
+		        					<i class="fa fa-play-circle-o"></i>
+		        				</div>
+		        			</div>
+		        	</div>
+	        </div>
+       	</div>
+
+
+
+		<div ng-show="projectdescription.pictures != false" class="line-all-width"></div>
+       	<div ng-show="projectdescription.pictures != false" class="galerie">
+       		<h1 class="text-center">GALERIE</h1>
+       		<div class="text-center">
+				<div class="line-bold"></div>
+			</div>
+
+				<div class="container-galerie">
+				<ng-masonry>
+					<ng-picture ng-items="projectdescription.pictures"></ng-picture>
+				</ng-masonry>
+				</div>
+       	</div>
+</div>
+<ng-footer></ng-footer>

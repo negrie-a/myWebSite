@@ -1,0 +1,64 @@
+<section class="section-header project">
+    <div class="row">
+        <div class="col-xs-push-4 col-xs-4 text-center">
+            <div class="main-icon">
+                <i class="fa fa-puzzle-piece"></i>
+            </div>
+        </div>
+        <div class="col-xs-8 search-bar">
+            <form id="search">
+                <input ng-model="project.search" name="q" type="text" size="40" placeholder="Rechercher..." />
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 ">
+            <h2>PROJETS</h2>
+            <p>C'est ici où je décrie l'ensemble des projets qui m'on tenu à cœur pendant ma scolarité</p>
+        </div>
+    </div>
+    <div class="col-sm-4 search-bar-small">
+        <form id="search">
+            <input ng-model="project.search" name="q" type="text" size="40" placeholder="Rechercher..." />
+        </form>
+    </div>
+</section>
+<section class="section-all-project">
+    <div class="animate-repeat" ng-repeat="item in projects | filter:project.search">
+        <div class="project">
+            <div class="row title-project">
+                <h2 class="col-md-12">{{item.title | uppercase}}</h2>
+            </div>
+            <div class="row">
+                <div ng-if="$index % 2 == 0 && project.widthScreen > 767" class="col-sm-7">
+                    <p>{{item.resume}}</p>
+                        <label>LANGAGE : {{item.language}}</label>
+
+                        <div class="button-blue">
+                            <a href="#/project/{{item.id}}">En savoir plus</a>
+                        </div>
+                </div>
+                    <div ng-init="search.gallery = '0'" class="col-sm-5 carousel-style">
+                        <ng-carousel  class="carousel-project" arrow-transition="true" effect="'slide'">
+                        <div ng-repeat="img in item.images  | filter:search.gallery" ng-class="{'item' : true, 'active' : $first, 'wrap-image' : true}">
+                            <img class="image-size" ng-src="assets/img/{{img.image}}">
+                        </div>
+                    </ng-carousel>
+                </div>
+                <div ng-if="$index % 2 != 0 || project.widthScreen <= 767" class="col-sm-7">
+                    <p>{{item.resume}}</p>
+                        <label>LANGAGE : {{item.language}}</label>
+                        <div class="button-blue">
+                            <a href="#/project/{{item.id}}">En savoir plus</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div ng-if="$last != true" class="row">
+            <div class="col-xs-push-4 col-xs-4">
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-footer color="#E27636"></ng-footer>

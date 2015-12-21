@@ -1,0 +1,187 @@
+<section class="section-header skill">
+	<div class="row">
+		<div class="col-xs-push-4 col-xs-4 text-center">
+			<div class="main-icon">
+				<i class="fa fa-tasks"></i>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h2>COMPÉTENCES</h2>
+			<p>C'est ici où je répertorie toutes mes compétences personnelles et professionnelles</p>
+		</div>
+	</div>
+	<div class="col-sm-4 search-bar-small">
+		<form method="get" action="/search" id="search">
+			<input name="q" type="text" size="40" placeholder="Search..." />
+		</form>
+	</div>
+</section>
+<section class="section-skills">
+	<div class="language-prog">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<h2>LANGAGE DE PROGRAMMATION</h2>
+			</div>
+			<div class="col-xs-12 text-center">
+				<div class="line-bold"></div>
+			</div>
+			<ul class="col-xs-12 text-center category">
+				<li id="labelWeb" ng-click="skills.showLanguage('Web', $event)" class="category-active">WEB</li>
+				<li>-</li>
+				<li id="labelCompiled" ng-click="skills.showLanguage('Compiled', $event)">COMPILED</li>
+				<li>-</li>
+				<li id="labelMobile" ng-click="skills.showLanguage('Mobile', $event)">MOBILE</li>
+			</ul>
+		</div>
+		<div class="row language-grid padding-phone">
+			<div class="col-sm-12 text-center">
+				<div ng-repeat="item in skills.language | filter:skills.typeLanguage" class="compiled repeated-item">
+					<!-- <div ng-diagram class="demo" data-percent="{{item.degres}}%"></div> -->
+					<h4>{{item.language}}</h4>
+					<div class="line-language"></div>
+					<!-- <p>{{item.text}}</p> -->
+				</div>
+			</div>
+		</div>
+		<p class="resume-programmation-language">Pour me lancer dans le monde de la programmation, j’ai appris dans le cadre de mon école le langage C que j’ai pratiqué pendant 2 ans. Entre-temps je me suis lancé à la découverte de la programmation objet que j’ai pratiqué avec le C++ lors de mon stage de 6 mois cher Adas. J'ai par la suite réalisé divers projets en C++ pour mes études que j’ai mis en présentation <a href="#/project">ici</a>.<br>
+Je me suis tournée vers le langage web en 2013 quand il m'est venu l’envie de concevoir mon propre site internet. J’ai consacré mon temps libre à apprendre les langages de base tels que l’HTML, le CSS et le Javascript. Afin d'approfondir mes connaissances, je me suis plongé dans divers framework assez connu du grand public tel que JQuery, AngularJs, Less ou NodeJs. J’ai également réalisé des stages dans plusieurs entreprises comme Fonxio sur 3 mois ou Familigo une start-up Espagnole sur une période de 6 mois où j'ai contribué à la création et l'amélioration de site web.<br>
+Aujourd’hui, pour un projet pédagogique, je développe une application mobile en Swift sur 2 ans nommé Luncher qui sera commercialisé et mis en service début 2017.</p>
+	</div>
+	<!-- <div class="line"></div>
+
+ -->	
+ 	<div class="row">
+		<div class="col-xs-1 line"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 recognition-section">
+			<div class="recognition">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>RECONNAISSANCE</h2>
+					</div>
+				</div>
+				<div ng-repeat="item in skills.recognitionData" class="row item">
+					<div class="icon">
+						<i class="{{item.icon}}"></i>
+					</div>
+					<div>
+						<div class="block-text" style="width:100%">
+							<h4>{{item.title}}</h4>
+							<p class="hidden-xs space">{{item.text}}</p>
+						</div>
+						<p class="visible-xs space padding-phone">{{item.text}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6 software-section">
+			<div class="software">
+				<div class="row">
+					<div class="col-xs-12 no-margin-pading">
+						<h2>SOFTWARE / HARDWARE / TOOLS</h2>
+					</div>
+				</div>
+				<div ng-repeat="item in skills.softwareData | orderBy:'software'">
+				<div ng-skillbar class="skillbar clearfix " data-percent="{{item.degres}}%">
+						<div class="skillbar-title" style="background: #63759D;"><span>{{item.software}}</span></div>
+						<div class="skillbar-bar" style="background: #8D99A6;"></div>
+						<div class="skill-bar-percent">{{item.degres}}%</div>
+					</div>
+				</div>
+				<!-- <div ng-skillbar class="skillbar clearfix " data-percent="50%">
+					<div class="skillbar-title" style="background: #63759D;"><span>Photoshop</span></div>
+					<div class="skillbar-bar" style="background: #8D99A6;"></div>
+					<div class="skill-bar-percent">50%</div>
+				</div>
+				<div ng-skillbar class="skillbar clearfix " data-percent="30%">
+					<div class="skillbar-title" style="background: #63759D;"><span>Photoshop</span></div>
+					<div class="skillbar-bar" style="background: #8D99A6;"></div>
+					<div class="skill-bar-percent">30%</div>
+				</div>
+				<div ng-skillbar class="skillbar clearfix " data-percent="50%">
+					<div class="skillbar-title" style="background: #63759D;"><span>Photoshop</span></div>
+					<div class="skillbar-bar" style="background: #8D99A6;"></div>
+					<div class="skill-bar-percent">50%</div>
+				</div>
+				<div ng-skillbar class="skillbar clearfix " data-percent="60%">
+					<div class="skillbar-title" style="background: #63759D;"><span>Photoshop</span></div>
+					<div class="skillbar-bar" style="background: #8D99A6;"></div>
+					<div class="skill-bar-percent">60%</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="  col-xs-1 line"></div>
+	</div>
+	<div class="row section-language-knowledge-hobbies">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="language ">
+					<div class="row">
+						<div class="col-xs-12">
+							<h2>LANGAGE</h2>
+						</div>
+					</div>
+					<div class="text-center">
+					<div ng-repeat="item in skills.foreignLanguage" class="compiled">
+						<div ng-diagram class="demo" size-diagram="140"  data-percent="{{item.degres}}%"></div>
+						<h4>{{item.language}}</h4>
+					</div>
+					</div>
+				</div>
+			</div>
+			<div class="knowledge col-md-6">
+				<div class="row">
+				<div class="col-xs-12">
+						<h2>CONNAISSANCE / VALEUR</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="row">
+							<div ng-repeat="item in skills.knowledge" ng-if="$index % 3 == 0" class="col-xs-12 pading-knowledge">
+								<label>{{item.word}}</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="row">
+							<div ng-repeat="item in skills.knowledge" ng-if="$index % 3 == 1" class="col-xs-12 pading-knowledge">
+								<label>{{item.word}}</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="row">
+							<div ng-repeat="item in skills.knowledge" ng-if="$index % 3 == 2" class="col-xs-12 pading-knowledge">
+								<label>{{item.word}}</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 no-pading section-hobbies">
+
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>HOBBIES</h2>
+					</div>
+				</div>
+				<ul class="hobbies">
+					<li ng-repeat="item in skills.hobbies">
+						<i class="{{item.icon}}"></i>
+						<label>{{item.hobbie}}</label>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<ng-footer color="#63759D"></ng-footer>
