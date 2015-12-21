@@ -1,0 +1,15 @@
+Button full screen en haut de la page
+mettre ma photo sur la page d'acceuil
+changer bouton page principale de l'intro
+rajouter la video sur le carousel
+parallax project desciption carousel
+mettre au autre mode d'affichage pour le projectDescription ( 2 image + description en dessous CC-> Gael du plexis)
+changer le header dans project.less de place 
+Mettre une animation sur la page skills la section language 
+
+bare de recherche dans les pages
+
+Marque le GPA
+mettre a jour le system de promise coté server
+mettre a jour le system de mail
+supprimer la colonne text dans la table SkillsLanguage
