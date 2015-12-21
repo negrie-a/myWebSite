@@ -1,0 +1,132 @@
+.masonry
+{
+  .grille
+  {
+   position: relative;
+   list-style-type: none;
+   padding: 0px;
+   margin-bottom: 0px;
+   z-index: 0;
+   
+     @media only screen and (min-width: 400px)
+     {
+       -moz-column-count: 2;
+       -webkit-column-count: 2;
+       column-count: 2;
+     }
+
+     @media only screen and (min-width: 700px)
+     {
+       -moz-column-count: 3;
+       -webkit-column-count: 3;
+       column-count: 3;
+     }
+
+     @media only screen and (min-width: 900px)
+     {
+       -moz-column-count: 4;
+       -webkit-column-count: 4;
+       column-count: 4;
+     }
+
+     li
+     {
+      width: 100%;
+      display: inline-block;
+    }
+
+    img
+    {
+      margin: 0 0 1em;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+
+}
+
+.app-backdrop-window.modal-backdrop.in
+{
+      opacity: 0.8;
+
+}
+
+.app-modal-window .modal-dialog
+{
+  margin: 0;
+  width: auto;
+ .modal-content
+  {
+    background-color: transparent;
+    border: 0px;
+    -webkit-box-shadow: 0 0px 0px rgba(0,0,0,0); 
+    box-shadow: 0 0px 0px rgba(0,0,0,0); 
+    text-align: center;
+  }
+
+  .arrow-left, .arrow-right
+  {
+    color: white;
+    font-size: 80px;
+    cursor: pointer;
+    position: relative;
+
+     @media only screen and (max-width: 800px)
+     {
+          font-size: 60px;
+     }
+
+    @media only screen and (max-width: 600px)
+     {
+           font-size: 40px;
+     }
+  }
+
+  .arrow-left
+  {
+    float: left;
+    padding-left : 25px;
+    max-width: 10%;
+
+    @media only screen and (max-width: 800px)
+     {
+          padding-left : 15px;
+     }
+
+    @media only screen and (max-width: 600px)
+     {
+           padding-left : 5px;
+     }
+  }
+
+  .arrow-right
+  {
+    float: right;
+    padding-right : 25px;
+    max-width: 10%;
+
+    @media only screen and (max-width: 800px)
+     {
+          padding-right : 15px;
+     }
+
+    @media only screen and (max-width: 600px)
+     {
+           padding-right : 5px;
+     }
+  }
+
+  img
+  {
+      max-width: 80%;
+  }
+
+  .no-highlight
+  {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+  }
+}

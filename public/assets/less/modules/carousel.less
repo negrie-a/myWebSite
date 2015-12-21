@@ -1,0 +1,156 @@
+.carousel{
+    height : 100%;
+    
+    .item img{
+        z-index: 1;
+        min-width: 100%;
+        -webkit-transform:rotateX(0deg) scale(1.0);
+        -moz-transform:rotateX(0deg) scale(1.0);
+        -ms-transform:rotateX(0deg) scale(1.0);
+        -o-transform:rotateX(0deg) scale(1.0);
+        transform:rotateX(0deg) scale(1.0);
+    }
+
+    .icon-prev,
+    .icon-next,
+    .fa-chevron-left,
+    .fa-chevron-right {
+        position: absolute;
+        top: 50%;
+        z-index: 5;
+        display: inline-block;
+    }
+
+    .icon-prev,
+    .fa-chevron-left {
+        left: 50%;
+        margin-left: -10px;
+    }
+
+    .icon-next,
+    .fa-chevron-right {
+        right: 50%;
+        margin-right: -10px;
+    }
+
+    .carousel-control {
+        .fa-chevron-left,
+        .fa-chevron-right,
+        .icon-prev,
+        .icon-next {
+          width: 30px;
+          height: 30px;
+          margin-top: -15px;
+          font-size: 30px;
+      }
+      .fa-chevron-left,
+      .icon-prev {
+          margin-left: -15px;
+      }
+      .fa-chevron-right,
+      .icon-next {
+          margin-right: -15px;
+      }
+  }
+  
+}
+
+.carousel-inner{
+    height : 100%;
+}
+
+.carousel-caption{
+    left:0%;
+    right: 0%;
+    padding-bottom : 0px;
+}
+
+.arrow {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 50px;
+    height: 50px;
+    border-right: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    opacity: 0.4;
+
+    /* Chrome, Safari, Opera */
+    -webkit-animation-name: animationArrow;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
+    /* Standard syntax */
+    animation-name: animationArrow;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes animationArrow {
+    0%   {top:-50px;}
+    50%  {top:-20px;}
+    100% {top:-50px;}
+}
+
+/* Standard syntax */
+@keyframes animationArrow {
+    0%   {top:-50px;}
+    50%  {top:-20px;}
+    100% {top:-50px;}
+}
+
+#arrow-carousel{
+    height: 5%;
+}
+
+.carousel.fade
+{
+    opacity: 1;
+
+    .item
+    {
+        -moz-transition: opacity ease-in-out 1s;
+        -o-transition: opacity ease-in-out 1s;
+        -webkit-transition: opacity ease-in-out 1s;
+        transition: opacity ease-in-out 1s;
+        left: 0 !important;
+        opacity: 0;
+        top:0;
+        position:absolute;
+        width: 100%;
+        display:block !important;
+        z-index:1;
+        &:first-child{
+            top:auto;
+            position:relative;
+        }
+
+        &.active
+        {
+            opacity: 1;
+            -moz-transition: opacity ease-in-out 1s;
+            -o-transition: opacity ease-in-out 1s;
+            -webkit-transition: opacity ease-in-out 1s;
+            transition: opacity ease-in-out 1s;
+            z-index:2;
+        }
+    }
+}
+
+.carousel-control
+{
+    cursor: pointer;
+}

@@ -1,0 +1,235 @@
+.inline-block
+{
+    display: inline-block;
+}
+
+.network-name {
+    // @media(max-height: )
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.space
+{
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.text-center
+{
+    text-align: center;
+}
+.text-right
+{
+    text-align: right;
+}
+.text-left
+{
+    text-align: left;
+}
+
+.color-main-2
+{
+    color: @main-color-2;
+}
+
+.home-page-color
+{
+    color: #E57A44;
+}
+
+.cursor
+{
+    cursor: pointer;
+}
+
+p
+{
+    font-weight: lighter;
+}
+
+.white
+{
+    color: #FFF;
+}
+
+.row
+{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.no-margin-pading
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.no-pading
+{
+    padding: 0px;
+}
+
+.no-pading-right
+{
+    padding-right: 0px;
+}
+
+
+.animation-page.ng-leave        {
+    z-index:9999;
+    -webkit-animation:slideOutLeft 0.8s both ease-in;
+    -moz-animation:slideOutLeft 0.8s both ease-in;
+    animation:slideOutLeft 0.8s both ease-in;
+}
+.animation-page.ng-enter 		{
+    z-index:8888;
+    -webkit-animation:slideInRight 0.8s both ease-in;
+    -moz-animation:slideInRight 0.8s both ease-in;
+    animation:slideInRight 0.8s both ease-in;
+}
+
+.animation-page-first.ng-enter
+{
+    -webkit-animation:scaleUp 0.5s both ease-in;
+    -moz-animation:scaleUp 0.5s both ease-in;
+    animation:scaleUp 0.5s both ease-in;
+}
+
+/* columns of same height styles */
+.row-same-height {
+    display: table;
+    width: 100%;
+}
+.col-xs-height {
+    display: table-cell;
+    float: none !important;
+}
+
+@media (min-width: 768px) {
+    .col-sm-height {
+        display: table-cell;
+        float: none !important;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-height {
+        display: table-cell;
+        float: none !important;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-height {
+        display: table-cell;
+        float: none !important;
+    }
+}
+
+/* rotate and fall */
+@-webkit-keyframes rotateFall {
+    0% { -webkit-transform: rotateZ(0deg); }
+    20% { -webkit-transform: rotateZ(10deg); -webkit-animation-timing-function: ease-out; }
+    40% { -webkit-transform: rotateZ(17deg); }
+    60% { -webkit-transform: rotateZ(16deg); }
+    100% { -webkit-transform: translateY(100%) rotateZ(17deg); }
+}
+@-moz-keyframes rotateFall {
+    0% { -moz-transform: rotateZ(0deg); }
+    20% { -moz-transform: rotateZ(10deg); -moz-animation-timing-function: ease-out; }
+    40% { -moz-transform: rotateZ(17deg); }
+    60% { -moz-transform: rotateZ(16deg); }
+    100% { -moz-transform: translateY(100%) rotateZ(17deg); }
+}
+@keyframes rotateFall {
+    0% { transform: rotateZ(0deg); }
+    20% { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+    40% { transform: rotateZ(17deg); }
+    60% { transform: rotateZ(16deg); }
+    100% { transform: translateY(100%) rotateZ(17deg); }
+}
+
+/* scale up */
+@keyframes scaleUp {
+    from 		{ opacity: 0.3; transform: scale(0.8); }
+}
+@-moz-keyframes scaleUp {
+    from 		{ opacity: 0.3; -moz-transform: scale(0.8); }
+}
+@-webkit-keyframes scaleUp {
+    from 		{ opacity: 0.3; -webkit-transform: scale(0.8); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from 	{ transform:translateX(100%); }
+    to 		{ transform: translateX(0); }
+}
+@-moz-keyframes slideInRight {
+    from 	{ -moz-transform:translateX(100%); }
+    to 		{ -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInRight {
+    from 	{ -webkit-transform:translateX(100%); }
+    to 		{ -webkit-transform: translateX(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUp {
+    from 	{ transform:translateY(100%); }
+    to 		{ transform: translateY(0); }
+}
+@-moz-keyframes slideInUp {
+    from 	{ -moz-transform:translateY(100%); }
+    to 		{ -moz-transform: translateY(0); }
+}
+@-webkit-keyframes slideInUp {
+    from 	{ -webkit-transform:translateY(100%); }
+    to 		{ -webkit-transform: translateY(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+    to 		{ transform: translateX(-100%); }
+}
+@-moz-keyframes slideOutLeft {
+    to 		{ -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes slideOutLeft {
+    to 		{ -webkit-transform: translateX(-100%); }
+}
+
+/* rotate out newspaper */
+@-webkit-keyframes rotateOutNewspaper {
+    to { -webkit-transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+@-moz-keyframes rotateOutNewspaper {
+    to { -moz-transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+@keyframes rotateOutNewspaper {
+    to { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+
+.animate-repeat {
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+    opacity:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+}

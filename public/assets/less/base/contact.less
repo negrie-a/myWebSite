@@ -1,0 +1,193 @@
+.section-header.contact
+{
+	background-image: url("../assets/img/lowpoly/contact.jpg");
+	background-position: 0% -150px;
+	h2{
+		color : white;
+		text-shadow: 0px 0px 26px rgba(0, 0, 0, 1);
+		&:before
+		{
+			background-color: #FD7B67;
+		}
+
+		&:after
+		{
+			background-color: #FD7B67;
+		}
+	}
+	p
+	{
+		text-shadow: 0px 0px 26px rgba(0, 0, 0, 1);
+	}
+	.main-icon
+	{
+		background-color: #FD7B67;
+		color: white;
+	}
+}
+
+.section-contact
+{
+	@colorcontact1 : #FD7B67;
+	@colorcontact2 : #286787;
+	padding: 60px;
+	padding-right: 7%;
+	padding-left: 10%;
+	background-image: url(../../assets/img/world-map.png);
+
+	@media(max-width : 992px)
+	{
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+
+	h3
+	{
+		color : @colorcontact2;
+	}
+
+	.grid-presentation
+	{
+		@media(max-width : 992px)
+		{
+			text-align: center;
+		}
+
+		color: @main-color-1;
+
+		p
+		{
+			color: #444444;
+		}
+
+		.get-in-touch, .address
+		{
+			margin-bottom: 40px;
+		}
+
+		.get-in-touch
+		{
+			max-width: 500px;
+			@media(max-width : 992px)
+			{
+				margin-right: auto;
+				margin-left: auto;
+			}
+
+			p
+			{
+				font-size: 17px;
+				line-height: 19px;
+			}
+		}
+
+		.item-data
+		{
+			padding-bottom: 1px;
+			padding-top: 1px;
+
+			.text-item
+			{
+				h3,p
+				{
+					padding: 0px;
+					margin: 0px;
+					padding-left: 8px;
+				}
+
+				h3
+				{
+					font-size: 15px;
+					font-weight: 400;
+				}
+			}
+
+			i
+			{
+				padding-top: 7px;
+				font-size: 25px;
+				display: inline-block;
+				text-align: center;
+				height: 30px;
+				width: 30px;
+				color: @colorcontact1;
+			}
+
+			.text-item
+			{
+				display: inline-block;
+			}
+		}
+
+		.social-networks
+		{
+			ul
+			{
+				padding: 0px;
+				li
+				{
+					cursor: pointer;
+					color: @colorcontact1;
+					padding-left: 5px;
+					padding-right: 5px;
+
+				}
+			}
+		}
+	}
+
+	.form-mail
+	{
+		.send-message-text
+		{
+			padding-bottom: 20px;
+			text-align: center;
+		}
+		.form-mail
+		{
+			font-size: 15px;
+			font-weight: 400;
+			text-align: center;
+			border-color: black;
+			input
+			{
+				width: 70%;
+				height: 43px;
+				border: solid 2px #AAAAAA;
+			}
+
+			textarea
+			{
+				width: 70%;
+				height: 200px;
+				resize:none;
+				border: solid 2px #AAAAAA;
+			}
+			input[type="submit"]
+			{
+				cursor: pointer;
+				background-color: @colorcontact1;
+				color: white;
+				border: 0px;
+				border-radius: 4px;
+			}
+		}
+
+		.information-mail
+		{
+			padding-left: 10px;
+		}
+
+		.loader_sendmail
+		{
+			height: 15px;
+  			position: absolute;
+  			left: 53%;
+  			@media(max-width : 700px)
+  			{
+  				left: 55%;
+  			}
+  			margin-top: 14px;
+		}
+	}
+}
