@@ -6,7 +6,7 @@ var index = function(req, res)
 
     ProjectsDetails = orm.model('SkillsLanguage');
     
-    ProjectsDetails.findAll().success(function(projects) {
+    ProjectsDetails.findAll().then(function(projects) {
 	res.setHeader('Content-Type', 'application/json');
 	res.json(projects);
     })
@@ -15,7 +15,7 @@ var index = function(req, res)
 var getLanguage = function(req, res)
 {
 	Language = orm.model('SkillsLanguage');
-    Language.findAll({where : {'type' : req.params.type}}).success(function(projects) {
+    Language.findAll({where : {'type' : req.params.type}}).then(function(projects) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(projects);
     });
@@ -24,7 +24,7 @@ var getLanguage = function(req, res)
 var getAllLanguage = function(req, res)
 {
 	Language = orm.model('SkillsLanguage');
-    Language.findAll().success(function(projects) {
+    Language.findAll().then(function(projects) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(projects);
     });
@@ -33,7 +33,7 @@ var getAllLanguage = function(req, res)
 var getRecognition = function(req, res)
 {
 	Recognition = orm.model('SkillsRecognition');
-    Recognition.findAll().success(function(projects) {
+    Recognition.findAll().then(function(projects) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(projects);
     });
@@ -42,7 +42,7 @@ var getRecognition = function(req, res)
 var getSoftware = function(req, res)
 {
 	Software = orm.model('SkillsSoftware');
-    Software.findAll().success(function(projects) {
+    Software.findAll().then(function(projects) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(projects);
     });
@@ -51,7 +51,7 @@ var getSoftware = function(req, res)
 var foreignLanguage = function(req, res)
 {
 	ForeignLanguage = orm.model('SkillsForeignLanguage');
-    ForeignLanguage.findAll().success(function(projects) {
+    ForeignLanguage.findAll().then(function(projects) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(projects);
     });
@@ -60,7 +60,7 @@ var foreignLanguage = function(req, res)
 var getKnowledge = function(req, res)
 {
 	Knowledge = orm.model('SkillsKnowledge');
-    Knowledge.findAll().success(function(projects) {
+    Knowledge.findAll().then(function(projects) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(projects);
     });
@@ -69,7 +69,7 @@ var getKnowledge = function(req, res)
 var getHobbies = function(req, res)
 {
 	Hobbies = orm.model('SkillsHobbies');
-    Hobbies.findAll().success(function(projects) {
+    Hobbies.findAll().then(function(projects) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(projects);
     });

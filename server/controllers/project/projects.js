@@ -6,7 +6,7 @@ var index = function(req, res)
 
     Project = orm.model('Projects');
     
-    Project.findAll().success(function(projects) {
+    Project.findAll().then(function(projects) {
 	res.setHeader('Content-Type', 'application/json');
 	res.json(projects);
     })
@@ -15,7 +15,7 @@ var index = function(req, res)
 var getProjectById = function(req, res)
 {
 	Project = orm.model('Projects');
-    Project.findAll({where : {'id' : req.params.id}}).success(function(projects) {
+    Project.findAll({where : {'id' : req.params.id}}).then(function(projects) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(projects);
     });
@@ -24,7 +24,7 @@ var getProjectById = function(req, res)
 var getProjectByName = function(req, res)
 {
 	Project = orm.model('Projects');
-    Project.find({where : {'title' : req.params.name}}).success(function(projects) {
+    Project.find({where : {'title' : req.params.name}}).then(function(projects) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(projects);
     });
@@ -33,7 +33,7 @@ var getProjectByName = function(req, res)
 var getAllImage = function(req, res)
 {
     ProjectsImage = orm.model('ProjectsImage');
-    ProjectsImage.findAll().success(function(images) {
+    ProjectsImage.findAll().then(function(images) {
 	res.setHeader('Content-Type', 'application/json');
 	console.log("toto");
 	res.json(images);
@@ -45,7 +45,7 @@ var getImageByList = function(req, res)
 	var list = req.params.list.split("-");
     ProjectsImage = orm.model('ProjectsImage');
     ProjectsImage.findAll({where : {id: list},
-    						attributes: ['image']}).success(function(image) {
+    						attributes: ['image']}).then(function(image) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(image);
     });
@@ -54,7 +54,7 @@ var getImageByList = function(req, res)
 var getImageById = function(req, res)
 {
     ProjectsImage = orm.model('ProjectsImage');
-    ProjectsImage.findAll({where : {'fk-id-projects' : req.params.id}}).success(function(image) {
+    ProjectsImage.findAll({where : {'fk-id-projects' : req.params.id}}).then(function(image) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(image);
     });
@@ -63,7 +63,7 @@ var getImageById = function(req, res)
 var getAllVideo = function(req, res)
 {
     ProjectsVideo = orm.model('ProjectsVideo');
-    ProjectsVideo.findAll().success(function(videos) {
+    ProjectsVideo.findAll().then(function(videos) {
 	res.setHeader('Content-Type', 'application/json');
 	res.json(videos);
     });
@@ -72,7 +72,7 @@ var getAllVideo = function(req, res)
 var getVideoById = function(req, res)
 {
     ProjectsVideo = orm.model('ProjectsVideo');
-    ProjectsVideo.findAll({where : {'fk-id-projects' : req.params.id}}).success(function(video) {
+    ProjectsVideo.findAll({where : {'fk-id-projects' : req.params.id}}).then(function(video) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(video);
     });

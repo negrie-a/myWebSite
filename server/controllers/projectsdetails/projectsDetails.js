@@ -6,7 +6,7 @@ var index = function(req, res)
 
     ProjectsDetails = orm.model('ProjectsDetails');
     
-    ProjectsDetails.findAll().success(function(projects) {
+    ProjectsDetails.findAll().then(function(projects) {
 	res.setHeader('Content-Type', 'application/json');
 	res.json(projects);
     })
@@ -15,7 +15,7 @@ var index = function(req, res)
 var getProjectDetails = function(req, res)
 {
 	Project = orm.model('ProjectsDetails');
-    Project.findAll({where : {'fk-id-projects' : req.params.id}}).success(function(projects) {
+    Project.findAll({where : {'fk-id-projects' : req.params.id}}).then(function(projects) {
     	res.setHeader('Content-Type', 'application/json');
 		res.json(projects);
     });

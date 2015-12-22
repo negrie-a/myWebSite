@@ -6,7 +6,7 @@ var index = function(req, res)
 
     Article = orm.model('Projects');
     
-    Article.findAll().success(function(projects) {
+    Article.findAll().then(function(projects) {
 	res.setHeader('Content-Type', 'application/json');
 	res.json(projects);
     })

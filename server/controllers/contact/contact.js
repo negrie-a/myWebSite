@@ -6,7 +6,7 @@ var index = function(req, res)
 {
 	 Contact = orm.model('Contact');
     
-     Contact.findAll().success(function(projects) {
+     Contact.findAll().then(function(projects) {
 	 res.setHeader('Content-Type', 'application/json');
 	 res.json(projects);
  	 })
