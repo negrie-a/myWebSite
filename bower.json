@@ -17,8 +17,8 @@
   ],
   "dependencies": {
     "angular-google-maps": "~2.2.1",
-    "videogular-buffering": "~1.4.0",
-    "videogular-controls": "~1.4.0",
+    "videogular-buffering": "~1.1.0",
+    "videogular-controls": "~1.0.1",
     "videogular-ima-ads": "~1.0.1",
     "videogular-overlay-play": "~1.0.1",
     "videogular-poster": "~1.0.1",
