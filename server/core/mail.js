@@ -27,13 +27,13 @@ var singletonMail = function() {
 		};
 
 		var emailUse;
-
 		if (from.indexOf("<") != -1)
 			emailUse = from.substring(from.indexOf("<") + 1, from.indexOf(">"));
 		else
 			emailUse = from;
 
 		console.log(emailUse);
+		console.log(transporter);
 		transporter[emailUse].sendMail(mailOptions, function(error, info){
 			if(error)
 			{
