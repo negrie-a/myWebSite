@@ -31,10 +31,11 @@ app.directive('ngFooter', function(){
 			},
 			{
 				"name" : "Réseaux sociaux",
-				"value" : 	[{"name" : "Google +", "link": "#", "icon": "fa-google-plus"},
-							{"name" : "Facebook", "link": "#/project", "icon": "fa-facebook"},
+				"value" : 	[{"name" : "Google +", "link": "https://plus.google.com/u/0/114664008323423476205", "icon": "fa-google-plus"},
+							{"name" : "Facebook", "link": "https://www.facebook.com/aurelien.negrier.1", "icon": "fa-facebook"},
 							{"name" : "Twitter", "link": "https://twitter.com/negrie_a", "icon": "fa-twitter"},
-							{"name" : "Linkedin", "link": "#/skills", "icon": "fa-linkedin"}]
+							{"name" : "Linkedin", "link": "https://www.linkedin.com/profile/view?id=AAIAABM-XmcB1cfdalzNhhFS0KnV05ptgzmS9YI&trk=nav_responsive_tab_profile_pic", "icon": "fa-linkedin"},
+							{"name" : "Github", "link": "https://github.com/negrie-a", "icon": "fa-github "}]
 			},
 			{
 				"name" : "Contactez-moi",
