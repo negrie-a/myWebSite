@@ -9,8 +9,8 @@
 </head>
 <body ng-app="Main">
 	<div ng-controller="indexController">
-		<ng-headerbar ng-init="hidebar='true'"></ng-headerbar>
-		<div ng-class="{'animation-page': animationActive == 'true', 'animation-page-first': animationActive == 'false'}" ng-view autoscroll="true" style="width:100%;height:100%; position: absolute; z-index:0;"></div>
+		<ng-headerbar ></ng-headerbar>
+		<div ng-class="{'animation-page': animationActive == 'true'}" ng-view autoscroll="true" style="width:100%;height:100%; position: absolute; z-index:0;"></div>
 	</div>
 </body>
 

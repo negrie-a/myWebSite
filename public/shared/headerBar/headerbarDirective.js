@@ -20,7 +20,6 @@ app.directive('ngHeaderbar', ['$location', function(location){
 			})
 			headerBar.fixedBar(element, scope.fixed);
 			headerBar.transparentBar(element, scope.transparence)
-
 		},
 		controller: function($scope, $location) {
 			$scope.$on('$routeChangeSuccess', function (scope, next, current) {
