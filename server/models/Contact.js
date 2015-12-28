@@ -10,7 +10,8 @@ module.exports = {
 		facebook : Seq.STRING,
 		linkedin : Seq.STRING,
 		twitter : Seq.STRING,
-		google : Seq.STRING
+		google : Seq.STRING,
+		github : Seq.STRING,
 	},
 	options:
 	{
