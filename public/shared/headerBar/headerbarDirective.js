@@ -11,8 +11,8 @@ app.directive('ngHeaderbar', ['$location', function(location){
 			var headerBar = new CheaderBar();
 			if (scope.active !== true)
 				headerBar.start(element);
-			else
-				headerBar.startOnScroll(element);
+//			else
+//				headerBar.startOnScroll(element);
 			element.on('$destroy', function()
 			{
 				$(window).off('scroll');
