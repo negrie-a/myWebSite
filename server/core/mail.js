@@ -2,12 +2,14 @@ var nodemailer = require('nodemailer');
 var hbs = require('nodemailer-express-handlebars');
 var Q = require('q');
 var mailConfig = {
-    "defaultFrom" : "Aurelien <aurelienegrier@hotmail.fr>",
+    "defaultFrom" : "Aurelien <negrier.aurelien@gmail.com>",
     "connect" : {
-        "aurelienegrier@hotmail.fr" : {
-            "service": 'Hotmail',
+        "negrier.aurelien@gmail.com" : {
+            "host": "smtp.gmail.com",
+            "secure": true,
+            "port": 465,
             "auth": {
-                "user": "aurelienegrier@hotmail.fr",
+                "user": "negrier.aurelien@gmail.com",
                 "pass": "*WEO5_LR"
             }
         }
