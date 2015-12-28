@@ -4,14 +4,15 @@ app.factory('contactFactory', ['$http', '$q', '$rootScope', function($http, $q, 
 
 		contact : false,
 		
-		sendMail : function(from1, to1, subject1, text1)
+		sendMail : function(from1, to1, subject1, text1, coord1)
 		{
 			var deferred = $q.defer();
 				$http.post('/contact/sendMail', {
 					from: from1,
 					to : to1,
 					subject : subject1,
-					text : text1})
+					text : text1,
+					coord: coord1})
 				.success(function(data, status)
 				{
 					deferred.resolve();

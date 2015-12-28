@@ -1,71 +1,61 @@
 var nodemailer = require('nodemailer');
-var Promise = require('promise');
-///////////////
-//CONFIG MAIL//
-///////////////
-
-var configMail = [{
-	service: "Hotmail",
-	auth: {
-		user: "aurelienegrier@hotmail.fr",
-		pass: "*WEO5_LR"
-	}
-}]
-
-//////////////
-
-var singletonMail = function() {
-	var transporter = {};
-
-	this.sendMail = function(from, to, subject, text, resolve, reject)
-	{
-		var mailOptions = {
-			from: from,
-			to: to,
-			subject: subject,
-			text: text
-		};
-
-		var emailUse;
-		if (from.indexOf("<") != -1)
-			emailUse = from.substring(from.indexOf("<") + 1, from.indexOf(">"));
-		else
-			emailUse = from;
-
-		console.log(emailUse);
-		console.log(transporter);
-		transporter[emailUse].sendMail(mailOptions, function(error, info){
-			if(error)
-			{
-				console.log(error);
-				reject(error);
-			}
-			else
-			{
-				console.log('Message sent: ' + info.response);
-				resolve(info);
-			}
-		});
-	}
-
-	function init() {
-		for(var item in configMail)
-			transporter[configMail[item].auth.user] = nodemailer.createTransport(configMail[item]);
-	}
-
-	if(singletonMail.caller != singletonMail.getInstance){
-		throw new Error('This object singletonMail cannot be instanciated');
-	}
-	init();
+var hbs = require('nodemailer-express-handlebars');
+var Q = require('q');
+var mailConfig = {
+    "defaultFrom" : "Aurelien <aurelienegrier@hotmail.fr>",
+    "connect" : {
+        "aurelienegrier@hotmail.fr" : {
+            "service": 'Hotmail',
+            "auth": {
+                "user": "aurelienegrier@hotmail.fr",
+                "pass": "*WEO5_LR"
+            }
+        }
+    },
+    "optionsHtml" : {
+        "viewEngine" : {
+            "extname" : ".hbs",
+            "layoutsDir" : "server/views/email/",
+            "partialsDir" : "server/views/email/partials/"
+        },
+        "viewPath" : "server/views/email/",
+        "extName" : ".hbs"
+    }
 }
 
-singletonMail.instance = null;
+var transporter = {};
 
-singletonMail.getInstance = function(){
-	if(this.instance === null){
-		this.instance = new singletonMail();
-	}
-	return this.instance;
+var self = this;
+
+Object.keys(mailConfig.connect).forEach(function (from) {     
+    transporter[from] = nodemailer.createTransport(mailConfig.connect[from]);
+    transporter[from].use('compile', hbs(mailConfig.optionsHtml));
+});
+
+this.getConfig = function (index) {
+    return mailConfig[index];
 }
 
-module.exports = singletonMail.getInstance();
+this.getTransport = function (emailUse) {
+    return transporter[emailUse];
+}
+
+this.sendMail = function (options) {
+    var deferred = Q.defer();
+    var emailUse = null;
+
+    if (options.from.indexOf("<") != -1)
+        emailUse = options.from.substring(options.from.indexOf("<") + 1, options.from.indexOf(">"));
+    else
+        emailUse = options.from;
+
+    self.getTransport(emailUse).sendMail(options, function (err) {
+        if (err) 
+            deferred.reject(err);
+        else 
+            deferred.resolve();
+    });
+    return deferred.promise;
+}
+
+module.exports = this;

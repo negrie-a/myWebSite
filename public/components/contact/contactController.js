@@ -39,12 +39,12 @@ $scope.$on('httpResponse', function (event, data) { // marche meme sur les autre
 		var from = "<aurelienegrier@hotmail.fr>";
 		var dest = "<aurelien.negrier@epitech.eu>";
 		var text = self.text;
-
-		text += "\n\n---------\nCoordonnée du contact : \n" + self.nameSender + "\n" + self.phoneSender + "\n" + self.emailSender + "\n---------";
+		var coord = "\n\n---------\nCoordonnée du contact : \n" + self.nameSender + "\n" + self.phoneSender + "\n" + self.emailSender + "\n---------";
 		contactFactory.sendMail(from,
 								dest,
 								self.subject,
-								text);
+								text,
+								coord);
 	}
 	return;
 }]);
