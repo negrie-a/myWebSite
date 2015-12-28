@@ -12,8 +12,8 @@ app.controller('indexController', ['$scope', '$rootScope', '$location', function
 		});
 	}, 1000);
 
-	// $rootScope.$on("$routeChangeSuccess", function(){
-	// 	window.scrollTo(0,0);
-	// })
+	$scope.$on('$viewContentLoaded', function(){
+		$scope.isRouteLoading = 'true';
+	});
 	return;
 }]);

@@ -1,4 +1,4 @@
-app.controller('homeController', ['$scope', 'articleFactory', 'contactFactory', 'projectFactory', function ($scope, articleFactory, contactFactory, projectFactory){
+app.controller('homeController', ['$scope', 'articleFactory', 'contactFactory', 'projectFactory', '$rootScope', function ($scope, articleFactory, contactFactory, projectFactory, $rootScope){
     var self = this;
 
     self.contact = [];

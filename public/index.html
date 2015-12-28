@@ -9,9 +9,8 @@
 </head>
 <body ng-app="Main">
 	<div ng-controller="indexController">
-		<ng-headerbar ></ng-headerbar>
-		<ng-loading-indicator></ng-loading-indicator>
-		<div ng-if="!isRouteLoading" ng-class="{'animation-page': animationActive == 'true'}" ng-view autoscroll="true" style="width:100%;height:100%; position: absolute; z-index:0;"></div>
+		<ng-headerbar ng-show="isRouteLoading"></ng-headerbar>
+		<div ng-show="isRouteLoading" ng-class="{'animation-page': animationActive == 'true'}" ng-view autoscroll="true" style="width:100%;height:100%; position: absolute; z-index:0;"></div>
 	</div>
 </body>
 
