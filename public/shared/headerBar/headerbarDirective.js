@@ -24,7 +24,7 @@ app.directive('ngHeaderbar', ['$location', function(location){
 		},
 		controller: function($scope, $location) {
 			$scope.$on('$routeChangeSuccess', function (scope, next, current) {
-				if (location.path() === "/" || location.path() === "/project/1")
+				if (location.path() === "/" || location.path().includes("/project/"))
 					$scope.hidebar = "true";
 				else
 					$scope.hidebar = "false";

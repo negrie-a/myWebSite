@@ -24,7 +24,7 @@ function Ccarousel() {
 		if (target !== undefined)
 			element.find(".button-scroll").click(function() {
 				$('html, body').animate({
-					scrollTop: $(target).offset().top - 40
+					scrollTop: $(target).offset().top
 				}, 1500);
 			});
 	}
