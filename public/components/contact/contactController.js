@@ -39,7 +39,7 @@ $scope.$on('httpResponse', function (event, data) { // marche meme sur les autre
 		var from = "<aurelienegrier@hotmail.fr>";
 		var dest = "<aurelien.negrier@epitech.eu>";
 		var text = self.text;
-		var coord = "\n\n---------\nCoordonnée du contact : \n" + self.nameSender + "\n" + self.phoneSender + "\n" + self.emailSender + "\n---------";
+		var coord = "---------  " + self.nameSender + " | " + self.phoneSender + " | " + self.emailSender + "  ---------";
 		contactFactory.sendMail(from,
 								dest,
 								self.subject,
