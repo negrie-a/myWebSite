@@ -10,7 +10,8 @@
 <body ng-app="Main">
 	<div ng-controller="indexController">
 		<ng-headerbar ></ng-headerbar>
-		<div ng-class="{'animation-page': animationActive == 'true'}" ng-view autoscroll="true" style="width:100%;height:100%; position: absolute; z-index:0;"></div>
+		<ng-loading-indicator></ng-loading-indicator>
+		<div ng-if="!isRouteLoading" ng-class="{'animation-page': animationActive == 'true'}" ng-view autoscroll="true" style="width:100%;height:100%; position: absolute; z-index:0;"></div>
 	</div>
 </body>
 
