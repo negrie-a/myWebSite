@@ -7,10 +7,16 @@
 	<link rel="stylesheet" type="text/css" href="dist/project.min.css">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
+
+
 <body ng-app="Main">
 	<div ng-controller="indexController">
 		<ng-headerbar ng-show="isRouteLoading"></ng-headerbar>
 		<div ng-show="isRouteLoading" ng-class="{'animation-page': animationActive == 'true'}" ng-view autoscroll="true" style="width:100%;height:100%; position: absolute; z-index:0;"></div>
+		<div ng-class="{'animate-header': 'true' == 'true'}"  class="preloader">
+			<img src="../assets/img/giff/preloader.gif">
+			<p>Loading ...</p>
+		</div>
 	</div>
 </body>
 

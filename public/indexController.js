@@ -13,7 +13,14 @@ app.controller('indexController', ['$scope', '$rootScope', '$location', function
 	}, 1000);
 
 	$scope.$on('$viewContentLoaded', function(){
-		$scope.isRouteLoading = 'true';
+		setTimeout(test, 1500);
 	});
+
+
+	function test() {
+		$scope.$apply(function () {
+        $scope.isRouteLoading = 'true';
+		});
+	}
 	return;
 }]);

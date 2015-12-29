@@ -40,15 +40,15 @@ function Ccarousel() {
 		else
 		{
 			$(document).ready(function(){
-			element.find("img").css("min-height", element.find(".carousel").height().toString() + "px");
-			element.find("img").css("max-height", element.find(".carousel").height().toString() + "px");
+			element.find("img").css("min-height", $( window ).height().toString() + "px");
+			element.find("img").css("max-height", $( window ).height().toString() + "px");
 			});
 			if (scale === false)
 				return
 			else
 			{
 				$(document).ready(function(){
-					$(window).resize(function(){
+					$(window).resize(function() {
 						element.find("img").css("min-height", element.find(".carousel").height().toString() + "px");
 						element.find("img").css("max-height", element.find(".carousel").height().toString() + "px");
 					});
@@ -67,14 +67,15 @@ function Ccarousel() {
 		}
 		else
 		{
-			element.find("img").css("min-width", element.find(".carousel").width().toString() + "px");
-			element.find("img").css("max-width", element.find(".carousel").width().toString() + "px");
+			element.find("img").css("min-width", $( window ).width().toString() + "px");
+			element.find("img").css("max-width", $( window ).width().toString() + "px");
 			if (scale === false)
 				return
 			else
 			{
 				$(document).ready(function(){
 					$(window).resize(function(){
+						console.log(element.find(".carousel").width());
 						element.find("img").css("min-width", element.find(".carousel").width().toString() + "px");
 						element.find("img").css("max-width", element.find(".carousel").width().toString() + "px");
 					});
