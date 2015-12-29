@@ -13,7 +13,7 @@
 	<div ng-controller="indexController">
 		<ng-headerbar ng-show="isRouteLoading"></ng-headerbar>
 		<div ng-show="isRouteLoading" ng-class="{'animation-page': animationActive == 'true'}" ng-view autoscroll="true" style="width:100%;height:100%; position: absolute; z-index:0;"></div>
-		<div ng-class="{'animate-header': 'true' == 'true'}"  class="preloader">
+		<div ng-class="{'animate-header': 'true' == 'true'}" ng-hide="isRouteLoading" class="preloader">
 			<img src="../assets/img/giff/preloader.gif">
 			<p>Loading ...</p>
 		</div>
