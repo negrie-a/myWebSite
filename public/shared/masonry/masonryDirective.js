@@ -100,33 +100,33 @@ app.directive('ngImageModal', [function()
 			{
 				var heightWindows = $(window).height();
 				var widthWindows = $(window).width();
-				//console.log(attrs.src);
 				var heavyImage = new Image(); 
 				heavyImage.src = attrs.src;
-				//console.log(heavyImage.height);
-				var heightImage = heavyImage.height;
-				var widthImage = heavyImage.width;
-				if (widthImage > widthWindows - (widthWindows * 20 / 100))
-				{
-					var widthMax = widthWindows - (widthWindows * 20 / 100);
-					var coef = widthImage / widthMax * 100;
-					heightImage = heavyImage.height * 100 / coef;
-				}
-				
-				if (heightImage > heightWindows - ((heightWindows) * 10 / 100))
-				{
-					console.log(heightImage);
-					heightImage = heightWindows - ((heightWindows) * 10 / 100);
-				}
+				heavyImage.onload = function() {
+					var heightImage = heavyImage.height;
+					var widthImage = heavyImage.width;
+					if (widthImage > widthWindows - (widthWindows * 20 / 100))
+					{
+						var widthMax = widthWindows - (widthWindows * 20 / 100);
+						var coef = widthImage / widthMax * 100;
+						heightImage = heavyImage.height * 100 / coef;
+					}
 
-				delete heavyImage;
-				element.css("height", heightImage);
-				element.css("max-height", (heightWindows)+ "px");
-				element.css("margin-top", ((heightWindows / 2) - (heightImage / 2)) + "px");
+					if (heightImage > heightWindows - ((heightWindows) * 10 / 100))
+					{
+						console.log(heightImage);
+						heightImage = heightWindows - ((heightWindows) * 10 / 100);
+					}
+
+					delete heavyImage;
+					element.css("height", heightImage);
+					element.css("max-height", (heightWindows)+ "px");
+					element.css("margin-top", ((heightWindows / 2) - (heightImage / 2)) + "px");
+				}
 			}
 			scope.$watch(
    			function() { return attrs.src; },
-   			function() {scope.centerImg();console.log("bg");},
+   			function() {scope.centerImg();},
     		true
 			);
 		}
@@ -155,7 +155,6 @@ app.directive('ngDisplayPicture', [function() {
 		//templateUrl : "shared/masonry/masonryDisplayPictureView.html",
 		link: function(scope, element, attrs, ngMasonryCtrl) 
 		{
-			console.log(ngMasonryCtrl.getPictures());
 			//ngMasonryCtrl.activeModal();
 		}
 	}
