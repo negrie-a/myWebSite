@@ -114,11 +114,9 @@ app.directive('ngImageModal', [function()
 
 					if (heightImage > heightWindows - ((heightWindows) * 10 / 100))
 					{
-						console.log(heightImage);
 						heightImage = heightWindows - ((heightWindows) * 10 / 100);
 					}
 
-					delete heavyImage;
 					element.css("height", heightImage);
 					element.css("max-height", (heightWindows)+ "px");
 					element.css("margin-top", ((heightWindows / 2) - (heightImage / 2)) + "px");
