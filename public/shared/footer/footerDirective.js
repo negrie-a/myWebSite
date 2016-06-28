@@ -22,7 +22,7 @@ app.directive('ngFooter', function(){
 
 			$scope.items = [{
 				"name" : "Liens de navigation",
-				"value" : 	[{"name" : "Acceuil", "link": "#", "icon": "fa-home"},
+				"value" : 	[{"name" : "Accueil", "link": "#", "icon": "fa-home"},
 							{"name" : "Projets", "link": "#/project", "icon": "fa-puzzle-piece"},
 							{"name" : "Blog", "link": "#/blog", "icon": "fa-tasks"},
 							{"name" : "Compétences", "link": "#/skills", "icon": "fa-trophy"},
