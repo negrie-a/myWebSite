@@ -17,6 +17,7 @@ var app = angular.module('Main', [
         libraries: 'weather,geometry,visualization'
     });
 });
+
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 	.when('/', {
@@ -58,7 +59,9 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.filter('backline', function () {
   return function (item) {
-    return item.replace(/\n/g, "<br />");
+  	if (item) {
+  		return item.replace(/\n/g, "<br />");
+  	}
   };
 });
 
@@ -162,14 +165,15 @@ app.factory('contactFactory', ['$http', '$q', '$rootScope', function($http, $q, 
 
 		contact : false,
 		
-		sendMail : function(from1, to1, subject1, text1)
+		sendMail : function(from1, to1, subject1, text1, coord1)
 		{
 			var deferred = $q.defer();
 				$http.post('/contact/sendMail', {
 					from: from1,
 					to : to1,
 					subject : subject1,
-					text : text1})
+					text : text1,
+					coord: coord1})
 				.success(function(data, status)
 				{
 					deferred.resolve();
@@ -711,17 +715,17 @@ $scope.$on('httpResponse', function (event, data) { // marche meme sur les autre
 		var from = "<aurelienegrier@hotmail.fr>";
 		var dest = "<aurelien.negrier@epitech.eu>";
 		var text = self.text;
-
-		text += "\n\n---------\nCoordonnée du contact : \n" + self.nameSender + "\n" + self.phoneSender + "\n" + self.emailSender + "\n---------";
+		var coord = "---------  " + self.nameSender + " | " + self.phoneSender + " | " + self.emailSender + "  ---------";
 		contactFactory.sendMail(from,
 								dest,
 								self.subject,
-								text);
+								text,
+								coord);
 	}
 	return;
 }]);
 
-app.controller('homeController', ['$scope', 'articleFactory', 'contactFactory', 'projectFactory', function ($scope, articleFactory, contactFactory, projectFactory){
+app.controller('homeController', ['$scope', 'articleFactory', 'contactFactory', 'projectFactory', '$rootScope', function ($scope, articleFactory, contactFactory, projectFactory, $rootScope){
     var self = this;
 
     self.contact = [];
@@ -1137,7 +1141,7 @@ app.directive('ngFooter', function(){
 
 			$scope.items = [{
 				"name" : "Liens de navigation",
-				"value" : 	[{"name" : "Acceuil", "link": "#", "icon": "fa-home"},
+				"value" : 	[{"name" : "Accueil", "link": "#", "icon": "fa-home"},
 							{"name" : "Projets", "link": "#/project", "icon": "fa-puzzle-piece"},
 							{"name" : "Blog", "link": "#/blog", "icon": "fa-tasks"},
 							{"name" : "Compétences", "link": "#/skills", "icon": "fa-trophy"},
@@ -1146,10 +1150,11 @@ app.directive('ngFooter', function(){
 			},
 			{
 				"name" : "Réseaux sociaux",
-				"value" : 	[{"name" : "Google +", "link": "#", "icon": "fa-google-plus"},
-							{"name" : "Facebook", "link": "#/project", "icon": "fa-facebook"},
+				"value" : 	[{"name" : "Google +", "link": "https://plus.google.com/u/0/114664008323423476205", "icon": "fa-google-plus"},
+							{"name" : "Facebook", "link": "https://www.facebook.com/aurelien.negrier.1", "icon": "fa-facebook"},
 							{"name" : "Twitter", "link": "https://twitter.com/negrie_a", "icon": "fa-twitter"},
-							{"name" : "Linkedin", "link": "#/skills", "icon": "fa-linkedin"}]
+							{"name" : "Linkedin", "link": "https://fr.linkedin.com/in/aurélien-negrier-11b15990", "icon": "fa-linkedin"},
+							{"name" : "Github", "link": "https://github.com/negrie-a", "icon": "fa-github "}]
 			},
 			{
 				"name" : "Contactez-moi",
@@ -1182,6 +1187,7 @@ app.directive('ngFooterItem', function()
 		}
 	}
 });
+
 app.directive('ngHeaderbar', ['$location', function(location){
 	return {
 		scope : {
@@ -1195,8 +1201,8 @@ app.directive('ngHeaderbar', ['$location', function(location){
 			var headerBar = new CheaderBar();
 			if (scope.active !== true)
 				headerBar.start(element);
-			else
-				headerBar.startOnScroll(element);
+//			else
+//				headerBar.startOnScroll(element);
 			element.on('$destroy', function()
 			{
 				$(window).off('scroll');
@@ -1204,11 +1210,10 @@ app.directive('ngHeaderbar', ['$location', function(location){
 			})
 			headerBar.fixedBar(element, scope.fixed);
 			headerBar.transparentBar(element, scope.transparence)
-
 		},
 		controller: function($scope, $location) {
 			$scope.$on('$routeChangeSuccess', function (scope, next, current) {
-				if (location.path() === "/" || location.path() === "/project/1")
+				if (location.path() === "/" || location.path().includes("/project/"))
 					$scope.hidebar = "true";
 				else
 					$scope.hidebar = "false";
@@ -1323,33 +1328,31 @@ app.directive('ngImageModal', [function()
 			{
 				var heightWindows = $(window).height();
 				var widthWindows = $(window).width();
-				//console.log(attrs.src);
 				var heavyImage = new Image(); 
 				heavyImage.src = attrs.src;
-				//console.log(heavyImage.height);
-				var heightImage = heavyImage.height;
-				var widthImage = heavyImage.width;
-				if (widthImage > widthWindows - (widthWindows * 20 / 100))
-				{
-					var widthMax = widthWindows - (widthWindows * 20 / 100);
-					var coef = widthImage / widthMax * 100;
-					heightImage = heavyImage.height * 100 / coef;
-				}
-				
-				if (heightImage > heightWindows - ((heightWindows) * 10 / 100))
-				{
-					console.log(heightImage);
-					heightImage = heightWindows - ((heightWindows) * 10 / 100);
-				}
+				heavyImage.onload = function() {
+					var heightImage = heavyImage.height;
+					var widthImage = heavyImage.width;
+					if (widthImage > widthWindows - (widthWindows * 20 / 100))
+					{
+						var widthMax = widthWindows - (widthWindows * 20 / 100);
+						var coef = widthImage / widthMax * 100;
+						heightImage = heavyImage.height * 100 / coef;
+					}
 
-				delete heavyImage;
-				element.css("height", heightImage);
-				element.css("max-height", (heightWindows)+ "px");
-				element.css("margin-top", ((heightWindows / 2) - (heightImage / 2)) + "px");
+					if (heightImage > heightWindows - ((heightWindows) * 10 / 100))
+					{
+						heightImage = heightWindows - ((heightWindows) * 10 / 100);
+					}
+
+					element.css("height", heightImage);
+					element.css("max-height", (heightWindows)+ "px");
+					element.css("margin-top", ((heightWindows / 2) - (heightImage / 2)) + "px");
+				}
 			}
 			scope.$watch(
    			function() { return attrs.src; },
-   			function() {scope.centerImg();console.log("bg");},
+   			function() {scope.centerImg();},
     		true
 			);
 		}
@@ -1378,7 +1381,6 @@ app.directive('ngDisplayPicture', [function() {
 		//templateUrl : "shared/masonry/masonryDisplayPictureView.html",
 		link: function(scope, element, attrs, ngMasonryCtrl) 
 		{
-			console.log(ngMasonryCtrl.getPictures());
 			//ngMasonryCtrl.activeModal();
 		}
 	}
@@ -1443,7 +1445,7 @@ function Ccarousel() {
 		if (target !== undefined)
 			element.find(".button-scroll").click(function() {
 				$('html, body').animate({
-					scrollTop: $(target).offset().top - 40
+					scrollTop: $(target).offset().top
 				}, 1500);
 			});
 	}
@@ -1459,15 +1461,15 @@ function Ccarousel() {
 		else
 		{
 			$(document).ready(function(){
-			element.find("img").css("min-height", element.find(".carousel").height().toString() + "px");
-			element.find("img").css("max-height", element.find(".carousel").height().toString() + "px");
+			element.find("img").css("min-height", $( window ).height().toString() + "px");
+			element.find("img").css("max-height", $( window ).height().toString() + "px");
 			});
 			if (scale === false)
 				return
 			else
 			{
 				$(document).ready(function(){
-					$(window).resize(function(){
+					$(window).resize(function() {
 						element.find("img").css("min-height", element.find(".carousel").height().toString() + "px");
 						element.find("img").css("max-height", element.find(".carousel").height().toString() + "px");
 					});
@@ -1486,14 +1488,15 @@ function Ccarousel() {
 		}
 		else
 		{
-			element.find("img").css("min-width", element.find(".carousel").width().toString() + "px");
-			element.find("img").css("max-width", element.find(".carousel").width().toString() + "px");
+			element.find("img").css("min-width", $( window ).width().toString() + "px");
+			element.find("img").css("max-width", $( window ).width().toString() + "px");
 			if (scale === false)
 				return
 			else
 			{
 				$(document).ready(function(){
 					$(window).resize(function(){
+						console.log(element.find(".carousel").width());
 						element.find("img").css("min-width", element.find(".carousel").width().toString() + "px");
 						element.find("img").css("max-width", element.find(".carousel").width().toString() + "px");
 					});
@@ -1845,9 +1848,13 @@ function Cvideogular()
 {
 	
 }
-app.controller('indexController', ['$scope', '$rootScope', function ($scope, $rootScope){
+app.controller('indexController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location){
 	$scope.animationActive = 'false';
-
+	
+	$scope.$on('$routeChangeSuccess', function (scope, next, current) {
+		$scope.currentPath = $location.path();
+	})
+	
 	setTimeout(function(){
 		$(document).ready(function()
 		{
@@ -1855,8 +1862,15 @@ app.controller('indexController', ['$scope', '$rootScope', function ($scope, $ro
 		});
 	}, 1000);
 
-	// $rootScope.$on("$routeChangeSuccess", function(){
-	// 	window.scrollTo(0,0);
-	// })
+	$scope.$on('$viewContentLoaded', function(){
+		setTimeout(test, 1500);
+	});
+
+
+	function test() {
+		$scope.$apply(function () {
+        $scope.isRouteLoading = 'true';
+		});
+	}
 	return;
 }]);

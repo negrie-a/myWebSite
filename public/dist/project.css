@@ -655,6 +655,36 @@ p {
 .animate-repeat.ng-enter.ng-enter-active {
   opacity: 1;
 }
+.preloader {
+  text-align: center;
+  background-color: #888888;
+  z-index: 9999999;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #2e5582;
+  background-attachment: fixed;
+  z-index: 999;
+}
+.preloader img {
+  background-color: inherit;
+  border: none;
+  z-index: 9999999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+}
+.preloader p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: 50px;
+  margin-left: -43px;
+  color: white;
+  font-size: 22px;
+}
 /* BUTTON */
 .btn-default:hover {
   background-color: #FFFFFF;
@@ -666,6 +696,20 @@ p {
 }
 .intro-icon-social .button-blue a:hover {
   border: solid 0px #e57a44;
+}
+@media screen and (orientation: portrait) {
+  .carousel-image .img-diplome {
+    content: url("../assets/img/remise_diplome_portrait.jpg");
+  }
+  .carousel-image .img-friends {
+    content: url("../assets/img/friends_portrait.jpg");
+  }
+  .carousel-image .img-promo {
+    content: url("../assets/img/promo_portrait.jpg");
+  }
+  .carousel-image .img-team {
+    content: url("../assets/img/team_portrait.jpg");
+  }
 }
 .button-network-name {
   padding-top: 10px;
@@ -771,7 +815,6 @@ p {
 }
 /* PROJECT */
 .section-project {
-  background-image: url("../assets/img/light-bg.png");
   padding: 0px;
 }
 .section-project .image-page {
@@ -844,10 +887,21 @@ p {
 .parallax-effect {
   padding: 50px;
   padding-top: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.parallax-effect::before {
+  content: ' ';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: white;
+  background: url("/assets/img/slide_project.jpg") no-repeat center center;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-image: url("/assets/img/slide_project.jpg");
+  will-change: transform;
+  z-index: -1;
 }
 .parallax-effect p {
   padding-top: 73px;
@@ -883,15 +937,13 @@ p {
 }
 /* BLOG */
 .section-blog {
-  padding: 60px;
-  padding-left: auto;
-  padding-right: auto;
   padding-bottom: 30px;
   padding-top: 20px;
   background-image: url("../assets/img/banne5.jpg");
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: 0px 100%;
+  background-color: white;
 }
 .section-blog .line {
   margin-left: auto;
@@ -910,9 +962,10 @@ p {
   padding: 8px;
 }
 .section-blog .none-article {
-  margin-top: 8px;
-  margin-bottom: 320px;
+  margin-top: 47px;
+  margin-bottom: 230px;
   font-weight: 400;
+  font-size: 26px;
   color: #555555;
 }
 .section-blog .container {
@@ -1292,7 +1345,7 @@ p {
 .section-all-blog {
   margin-left: 80px;
   margin-right: 80px;
-  margin-bottom: 150px;
+  margin-bottom: 270px;
 }
 .section-all-blog .blog-item .block-img .style-img-blog .content-text h3 {
   border-bottom: solid 2px #97C01A;
@@ -1300,9 +1353,15 @@ p {
 .section-all-blog .blog-item .block-img .style-img-blog .content-button a:hover {
   color: #97C01A;
 }
+.section-all-blog .none-article {
+  margin-top: 100px;
+  font-weight: 400;
+  font-size: 26px;
+  color: #555555;
+}
 .section-header.skill {
   background-image: url("../assets/img/lowpoly/skills.jpg");
-  background-position: 0% -420px;
+  background-position: 0% -110px;
 }
 .section-header.skill h2 {
   color: white;
@@ -1519,7 +1578,7 @@ p {
   height: 400px;
 }
 .section-header.about {
-  background-image: url("../assets/img/lowpoly/about.png");
+  background-image: url("../assets/img/lowpoly/about.jpg");
   background-position: 0% -280px;
 }
 .section-header.about h2 {
@@ -2162,6 +2221,7 @@ a {
 }
 .carousel {
   height: 100%;
+  width: 100%;
 }
 .carousel .item img {
   z-index: 1;
